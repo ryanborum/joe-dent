@@ -1,4 +1,12 @@
-walk(document.body);
+const domainExclusions = ["office.com", "service-now.com"]
+var currentDomain = window.location.hostname.toString();
+currentRootDomain = currentDomain.substring(currentDomain.lastIndexOf(".", currentDomain.lastIndexOf(".") - 1) + 1);
+
+console.log(currentDomain);
+console.log(currentRootDomain);
+if (domainExclusions.includes(currentRootDomain) == false){
+	walk(document.body);
+}
 
 function walk(node) 
 {
@@ -39,11 +47,19 @@ function handleText(textNode)
 {
 	var v = textNode.nodeValue;
 
-	v = v.replace(/\bThe Cloud\b/g, "My Butt");
-	v = v.replace(/\bThe cloud\b/g, "My butt");
-	v = v.replace(/\bthe Cloud\b/g, "my Butt");
-	v = v.replace(/\bthe cloud\b/g, "my butt");
+	v = v.replace(/\bCrowdstrike\b/g, "Clownstrike");
+	v = v.replace(/\bCrowdStrike\b/g, "ClownStrike");
+	v = v.replace(/\bcrowdstrike\b/g, "clownstrike");
 	
+	v = v.replace(/\Carbon Black\b/g, "Carbon Blonk");
+	v = v.replace(/\carbon black\b/g, "carbon blonk");
+	v = v.replace(/\Carbon black\b/g, "Carbon blonk");
+	v = v.replace(/\carbon Black\b/g, "carbon Blonk");
+
+	v = v.replace(/\bSentinelOne\b/g, "SensualOne");
+	v = v.replace(/\bSentinelone\b/g, "Sensualone");
+	v = v.replace(/\bsentinelone\b/g, "sensualone");
+
 	textNode.nodeValue = v;
 }
 

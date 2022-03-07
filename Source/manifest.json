@@ -1,8 +1,8 @@
 {
-	"manifest_version": 2,
-	"name": "Cloud To Butt",
-	"version": "1.0",
-	"description": "Replaces the text 'the cloud' with 'my butt'.",
+	"manifest_version": 3,
+	"name": "Joe Dent",
+	"version": "1.2",
+	"description": "Replaces the text 'crowdstrike' with 'clownstrike', 'carbon black' with 'carbon blonk', and 'sentinelone' with 'sensualone'.",
 	"content_scripts": 
 	[
 		{
