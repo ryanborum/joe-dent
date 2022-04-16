@@ -1,4 +1,4 @@
-const domainExclusions = ["office.com", "service-now.com"]
+const domainExclusions = ["office.com", "service-now.com", "ibmcloud.com"]
 var currentDomain = window.location.hostname.toString();
 currentRootDomain = currentDomain.substring(currentDomain.lastIndexOf(".", currentDomain.lastIndexOf(".") - 1) + 1);
 
@@ -8,13 +8,13 @@ if (domainExclusions.includes(currentRootDomain) == false){
 	walk(document.body);
 }
 
-function walk(node) 
+function walk(node)
 {
 	// I stole this function from here:
 	// http://is.gd/mwZp7E
-	
+
 	var child, next;
-	
+
 	var tagName = node.tagName ? node.tagName.toLowerCase() : "";
 	if (tagName == 'input' || tagName == 'textarea') {
 		return;
@@ -23,13 +23,13 @@ function walk(node)
 		return;
 	}
 
-	switch ( node.nodeType )  
+	switch ( node.nodeType )
 	{
 		case 1:  // Element
 		case 9:  // Document
 		case 11: // Document fragment
 			child = node.firstChild;
-			while ( child ) 
+			while ( child )
 			{
 				next = child.nextSibling;
 				walk(child);
@@ -43,14 +43,14 @@ function walk(node)
 	}
 }
 
-function handleText(textNode) 
+function handleText(textNode)
 {
 	var v = textNode.nodeValue;
 
 	v = v.replace(/\bCrowdstrike\b/g, "Clownstrike");
 	v = v.replace(/\bCrowdStrike\b/g, "ClownStrike");
 	v = v.replace(/\bcrowdstrike\b/g, "clownstrike");
-	
+
 	v = v.replace(/\Carbon Black\b/g, "Carbon Blonk");
 	v = v.replace(/\carbon black\b/g, "carbon blonk");
 	v = v.replace(/\Carbon black\b/g, "Carbon blonk");
@@ -62,5 +62,3 @@ function handleText(textNode)
 
 	textNode.nodeValue = v;
 }
-
-
